@@ -1,5 +1,5 @@
 #include <ESP8266WiFi.h>
-
+// try use NodeMCU board to impliment
 //*-- IoT Information
 #define ssid    "RSy_home"
 #define ssid2    "Royce's iPhone"

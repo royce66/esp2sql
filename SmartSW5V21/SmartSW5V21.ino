@@ -38,16 +38,11 @@ bool indLED;
 
 void MnSwDl(unsigned int dt) {
   val = digitalRead(inPin);
-//  Serial.println(val);
-//  Serial.print("  GIPO2: ");
   if ( val == 0 ) {
-//    Serial.print(" : Manual Switched ---> ");
     if (relayStatus == 0) {
-//    Serial.println("on");
       digitalWrite(SwitchedPin, HIGH);
       relayStatus = 1;
     } else {
-//    Serial.println("off");
       digitalWrite(SwitchedPin, LOW);
       relayStatus = 0;
     }
@@ -109,26 +104,18 @@ void setup_wifi() {
 void callback(char* topic, byte* payload, unsigned int length) {
   payload[length] = '\0';
   strTopic = String((char*)topic);
-  if(strTopic == mqttTopic)
-    {
+  if(strTopic == mqttTopic) {
     switch1 = String((char*)payload);
-//    Serial.print(strTopic);
-//    Serial.print(" : ---> ");
-    if(switch1 == swon)
-      {
-//        Serial.println("on");
+    if(switch1 == swon) {
         digitalWrite(SwitchedPin, HIGH);
         relayStatus = 1;
          digitalWrite(blueLED, LOW);
-      }
-    else if (switch1 == swoff)
-      {
-//        Serial.println("off");
+    } else if (switch1 == swoff) {
         digitalWrite(SwitchedPin, LOW);
         relayStatus = 0;
          digitalWrite(blueLED, HIGH);
-      }
     }
+  }
 }
 
 void reconnect() {
